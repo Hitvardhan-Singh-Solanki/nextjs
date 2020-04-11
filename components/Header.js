@@ -6,7 +6,7 @@ const linkStyle = {
 
 export default () => {
   return (
-    <div>
+    <div className={'nav-container'}>
       <Head>
         <link
           rel="stylesheet"
@@ -30,6 +30,12 @@ export default () => {
       <Link href="/cards">
         <a style={linkStyle}>Cards</a>
       </Link>
+      <style jsx>{`
+        .nav-container {
+          background-color: #0097a7;
+          padding: 10px 30px;
+        }
+      `}</style>
     </div>
   );
 };

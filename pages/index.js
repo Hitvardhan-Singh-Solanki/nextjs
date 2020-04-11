@@ -25,8 +25,7 @@ const PostLink = ({ post }) => (
 
       a {
         text-decoration: none;
-        color: blue;
-        font-family: 'Arial';
+        color: #80deea;
       }
 
       a:hover {
@@ -42,7 +41,7 @@ export default () => {
   useEffect(() => {
     setTimeout(() => {
       setShowSpinner(false);
-    }, 2000);
+    }, 20);
   }, []);
 
   return (
@@ -50,24 +49,38 @@ export default () => {
       {showSpinner ? (
         <Spinner animation="grow" />
       ) : (
-        <>
-          <h1>My Blog</h1>
+        <div className="main-container">
+          <p className="display-4 bold">My Blog</p>
           <ul>
             {getPosts().map((post) => (
               <PostLink key={post.id} post={post} />
             ))}
           </ul>
           <style jsx>{`
-            h1,
-            a {
-              font-family: 'Arial';
-            }
-
             ul {
               padding: 0;
             }
+            .main-container {
+              position: relative;
+              display: flex;
+              flex-flow: column;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              text-align: center;
+            }
+            .bold {
+              font-weight: 400;
+            }
+            .bold::before {
+              content: '';
+              background-color: red;
+            }
           `}</style>
-        </>
+        </div>
       )}
     </Layout>
   );
